@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<!--thêm version cho spring cloud-->
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 
@@ -32,6 +35,15 @@
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
 				<version>1.20.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!--thư viện ngoài ko phải của spring boot nên phải thêm kết nối tại phần quản lý tại đây-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -52,6 +64,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version> <!-- hoặc phiên bản mới nhất -->
+            <configuration>
+                <parallel>methods</parallel>
+                <threadCount>4</threadCount> <!-- hoặc số luồng bạn muốn -->
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 </project>

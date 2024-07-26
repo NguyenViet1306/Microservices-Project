@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class OrderService {
 
 	private final OrderRepository orderRepository;
-	private final WebClient webClient;
+	private final WebClient.Builder webClientBuilder;
 
 	public void placeOrder(OrderRequest orderRequest) throws IllegalAccessException {
 		Order order = new Order();
@@ -36,8 +36,8 @@ public class OrderService {
 		// call api inventory xem còn hàng trong kho không
 		// sử dụng pt của WebClient gọi đến api kiểm tra, sử dụng uriBuilder để truyền
 		// giá trị
-		InventoryResponse[] inventoryResponsArray = webClient.get()
-				.uri("http://localhost:8082/api/inventory",
+		InventoryResponse[] inventoryResponsArray = webClientBuilder.build().get()
+				.uri("http://inventory-service-new/api/inventory",
 						uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
 				.retrieve().bodyToMono(InventoryResponse[].class).block();
 
