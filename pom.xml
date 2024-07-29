@@ -2,10 +2,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.progamming.techie</groupId>
-	<artifactId>microservice-new</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,14 +10,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<java.version>17</java.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-		<!--thêm version cho spring cloud-->
-		 <spring-cloud.version>2021.0.2</spring-cloud.version>
-	</properties>
 
+	<groupId>com.progamming.techie</groupId>
+	<artifactId>microservice-new</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
 	<modules>
 		<module>product-service-new</module>
 		<module>order-service-new</module>
@@ -29,12 +23,19 @@
 		<module>discovery-server</module>
 	</modules>
 
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<!--thêm version cho spring cloud-->
+		<spring-cloud.version>2021.0.2</spring-cloud.version>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
-				 <version>1.16.3</version>
+				<version>1.16.3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

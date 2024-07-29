@@ -9,6 +9,11 @@
 	</parent>
 	<artifactId>discovery-server</artifactId>
 
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
+
 	<dependencies>
 		<!--do thư viện này thuộc nhóm groupId khác nên phải thêm thông tin bổ sung-->
 		<!--thông tin bổ sung được thêm vào file pom.xml tổng của project-->
